@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+    frontend:
+        build: ./frontend
+        ports: 
+            - 3000:3000
+    backend:
+        build: ./backend
+        ports:
+            - 2001:2001
+        enviornment:
+            DB_URL: mongodb://db/project_1
+    db:
+        image: mongo:4.0-xenial
+        ports: 
+            - 27017:27017
+        volumes:
+            - project_1: /data/db
+volumes: 
+project_1: 
